@@ -49,8 +49,9 @@ articleRoute.patch("/:id", async (req, res) => {
 });
 
 articleRoute.delete("/:id", async (req, res) => {
+  const { id } = req.params;
   try {
-    const deleteArticle = await Article.findByIdAndDelete(req.params.id);
+    const deleteArticle = await Article.findByIdAndRemove(id);
     res.send(deleteArticle);
   } catch (err) {
     console.log(err);
