@@ -32,14 +32,17 @@ articleRoute.post("/", async (req, res) => {
 
 // article route patch request
 articleRoute.patch("/:id", async (req, res) => {
+  const { id: _id } = req.params;
+  const post = req.body;
   try {
-    const updatedArticle = await Article.updateOne(
-      { _id: req.params.id },
+    const updatedPost = await Article.findByIdAndUpdate(
+      _id,
+      { ...post, _id },
       {
-        $set: { title: req.body.title },
+        new: true,
       }
     );
-    res.send(`Title ${req.body.title} has been successfully Updated...`);
+    res.send(`Post has been successfully Updated...`);
   } catch (err) {
     console.log(err);
   }
