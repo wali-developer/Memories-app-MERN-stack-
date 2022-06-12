@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const articleSchema = mongoose.Schema({
+const postSchema = mongoose.Schema({
   creator: {
     type: String,
   },
@@ -22,4 +22,4 @@ const articleSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Article", articleSchema);
+module.exports = mongoose.model("Post", postSchema);
